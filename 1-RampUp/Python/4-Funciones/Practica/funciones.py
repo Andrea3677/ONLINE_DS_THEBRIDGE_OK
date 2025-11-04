@@ -1,77 +1,89 @@
-def area_cuad (lado):
-    return lado**2
+import math
 
-def area_tri(base, altura):
-    return (base*altura)/2
+def ejercicio_1(dia):
+    dias_semana = {1: "Lunes",
+               2: "Martes",
+               3: "Miércoles",
+               4: "Jueves",
+               5: "Viernes",
+               6: "Sábado",
+               7: "Domingo"}
+    return dias_semana.get(dia, "Día erróneo")
 
-def area_cir(radio):
-    return math.pi*(radio**2)
+def ejercicio_2(tamaño:int=5):
+    lista_8 = list(range(int(tamaño),0,-1))
+    while len(lista_8) > 0:
+        print(*lista_8)
+        lista_8.pop(0)
 
-def fibonacci(numero):
-    if numero <= 1:
-        return 0
-    elif numero == 1:
-        return 1
+def ejercicio_3(num_1, num_2):
+    if num_1 == num_2:
+        out = "Son iguales"
+    elif num_1 > num_2:
+        out = "Primer número mayor que segundo"
     else:
-        resultado = fibonacci(numero-1) + fibonacci(numero-2)
-        return resultado
-    
-def unir (*args):
-    return " ".join(args)
+        out = "Segundo número mayor que primero"
+    return out
 
-def eliminar(lista,comando,elemento = None):
+def limpieza_texto(texto, dict_vocales={'á':'a',
+                                        'é':'e',
+                                        'í':'i',
+                                        'ó':'o',
+                                        'ú':'u'}):
+    texto = texto.lower()
+
+    for clave in dict_vocales:
+        texto = texto.replace(clave, dict_vocales[clave])
+    return texto
+
+def ejercicio_4(frase, letra):
+    frase = limpieza_texto(frase)
+    return frase.count(letra.lower())
+
+def ejercicio_5(frase):
+
+    dict_conteo = {}
+    frase = limpieza_texto(frase)
+
+    for caracter in frase:
+        if caracter not in dict_conteo.keys() and caracter not in [" ", ","]:
+            dict_conteo[caracter] = frase.count(caracter)
+
+    return dict_conteo
+
+def ejercicio_6(lista, comando, elemento=None):
     if comando == "add":
         lista.append(elemento)
-        return lista
     elif comando == "remove":
-        lista.remove(elemento)
-        return lista
+        try:
+            lista.remove(elemento)
+        except:
+            print("El elemento no se encuentra en la lista")
     else:
-        return "Comando inválido"
+        print("Comando no reconocido")
+    return lista
+
+def ejercicio_7(*args):
+    return " ".join(args)
+
+def fibonacci(n):
+    if n == 0 or n == 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+def cuadrado(l, n=1):
+    return round(n * l ** 2, 2)
+
+def triangulo(b, a):
+    return round(b * a / 2, 2)
+
+def circulo(r):
+    return round(math.pi * r ** 2, 2)
+
+
+
+if __name__ == "__main__":
+    print(triangulo(3,7))
+    print(circulo(10))
+    print()
     
-def conversion_dict(cadena):
-    diccionario ={}
-    for indice, letra in enumerate(cadena):
-        if letra in diccionario.keys():
-            diccionario[letra].append(indice)
-        else:
-            diccionario[letra] = [indice]
-    return diccionario
-
-
-def contador_letras (cadena,letra):
-    return cadena.count(letra)
-
-
-def comparacion(numero1,numero2):
-    if numero1 == numero2:
-        return "Los numeros son iguales"
-    elif numero1 > numero2:
-        return "El primer numero es mayor que el segundo."
-    else:
-        return "El segundo numero es mayor que el primero."
-
-def piramide(numero):
-    for i in list(range(numero,0,-1)):
-        for j in (range(i,0,-1)):
-            print(j, end=" ")
-        print()
-
-def dia (numero):
-    match numero:
-        case 1:
-            return "Lunes"
-        case 2:
-            return "Martes"
-        case 3:
-            return "Miércoles"
-        case 4:
-            return "Jueves"
-        case 5:
-            return "Viernes"
-        case 6:
-            return "Sabado"
-        case 7:
-            return "Domingo"
-        case _:
-            return "El dato introducido es inválido"
