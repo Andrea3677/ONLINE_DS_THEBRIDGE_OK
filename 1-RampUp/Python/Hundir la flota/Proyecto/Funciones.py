@@ -55,11 +55,9 @@ def disparar(coordenada_i, coordenada_j, tablero):
 
 #Función para comprobar si la coordenada es válida
 def coordenada_valida(i,j):
-    if i.isalpha() or j.isalpha():
+    if len(i)!= 1 or len(j)!= 1:
         return False,i,j
-    elif i.isalnum() or j.isalnum():
-        return False,i,j
-    elif i.isdigit() or j.isdigit() == False:
+    elif i.isalpha() or j.isalpha():
         return False,i,j
     else:
         i = int(i)-1
