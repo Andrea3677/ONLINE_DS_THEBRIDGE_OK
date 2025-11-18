@@ -1,0 +1,6 @@
+matplotlib
+
+Gráfico de barras: Para comparar frecuencias. Para visualizar una variable categórica como 'gender' (género),
+la visualización más apropiada es el gráfico de barras (bar plot). 
+
+Gráfico de pastel: Para mostrar proporciones (solo si hay pocas categorías)
