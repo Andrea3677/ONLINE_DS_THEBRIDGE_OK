@@ -1,0 +1,1 @@
+SELECT ArtistId FROM artists WHERE ArtistId > 3

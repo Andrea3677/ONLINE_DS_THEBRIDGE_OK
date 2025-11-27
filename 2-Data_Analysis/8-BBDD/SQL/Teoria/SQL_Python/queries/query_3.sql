@@ -1,0 +1,1 @@
+SELECT GenreId FROM genres WHERE GenreId < 20
